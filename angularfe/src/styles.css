@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+:host {
+    background-image: url('https://toigingiuvedep.vn/wp-content/uploads/2021/07/hinh-anh-nen-nui-rung-dep-full-hd.jpg');
+    background-size: cover;
+  background-position: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  }
