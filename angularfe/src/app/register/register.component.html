@@ -27,12 +27,12 @@
           [ngClass]="{ 'is-invalid': f.submitted && username.errors }"
         />
         <div class="invalid-feedback" *ngIf="username.errors && f.submitted">
-          <div *ngIf="username.errors['required']">Username is required</div>
+          <div *ngIf="username.errors['required']">Username là bắt buộc</div>
           <div *ngIf="username.errors['minlength']">
-            Username must be at least 3 characters
+            Username phải có ít nhất 3 ký tự
           </div>
           <div *ngIf="username.errors['maxlength']">
-            Username must be at most 20 characters
+            Username có nhiều nhất 20 ký tự
           </div>
         </div>
       </div>
@@ -49,9 +49,9 @@
           [ngClass]="{ 'is-invalid': f.submitted && email.errors }"
         />
         <div class="invalid-feedback" *ngIf="email.errors && f.submitted">
-          <div *ngIf="email.errors['required']">Email is required</div>
+          <div *ngIf="email.errors['required']">Email là bắt buộc</div>
           <div *ngIf="email.errors['email']">
-            Email must be a valid email address
+            Email phải là một địa chỉ email hợp lệ
           </div>
         </div>
       </div>

@@ -2,23 +2,63 @@
 <div class="col-md-6 offset-md-3">
     <h2 class="text-center" style="margin-top: 48px;">Create Employee</h2>
 
-    <form (ngSubmit)="onSubmit()">
+    <form (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate>
         <div class="form-group">
             <label>First Name</label>
-            <input type="text" class="form-control" id="firstName"
-                [(ngModel)]="employee.firstName" name ="firstName">
+            <input 
+                class="form-control" id="firstName"
+                [(ngModel)]="employee.firstName" name ="firstName"
+                type="text"
+                required
+                #firstname="ngModel"
+                [(ngModel)]="form.firstname"
+                pattern="^[a-zA\u00C0-\u017F]+$"
+                [ngClass]="{ 'is-invalid': f.submitted && firstname.errors }"
+                >
+            <div *ngIf="firstname.errors && f.submitted" class="invalid-feedback">
+                <div *ngIf="firstname?.errors?.['required']">first name là bắt buộc</div>
+                <div *ngIf="firstname?.errors?.['pattern']">first name chỉ được nhập chữ cái</div>
+            </div>
         </div>
         <div class="form-group">
             <label>Last Name</label>
-            <input type="text" class="form-control" id="lastName"
-                [(ngModel)]="employee.lastName" name ="lastName">
+            <input 
+                class="form-control" id="lastName"
+                [(ngModel)]="employee.lastName" name ="lastName"
+                type="text"
+                required
+                #lastname="ngModel"
+                [(ngModel)]="form.lastname"
+                pattern="^[a-zA\u00C0-\u017F]+$"
+                [ngClass]="{ 'is-invalid': f.submitted && lastname.errors }"
+                >
+            <div *ngIf="lastname.errors && f.submitted" class="invalid-feedback">
+                <div *ngIf="lastname?.errors?.['required']">last name là bắt buộc</div>
+                <div *ngIf="lastname?.errors?.['pattern']">last name chỉ được nhập chữ cái</div>
+            </div>
         </div>
         <div class="form-group">
             <label>Email Id</label>
-            <input type="email" class="form-control" id="emailId"
-                [(ngModel)]="employee.emailId" name ="emailId">
+            <input
+                type="email"
+                class="form-control"
+                name="email"
+                [(ngModel)]="form.email"
+                required
+                email
+                #email="ngModel"
+                [ngClass]="{ 'is-invalid': f.submitted && email.errors }"
+                />
+            <div *ngIf="email.errors && f.submitted" class="invalid-feedback">
+                <div *ngIf="email.errors['required']">Email là bắt buộc</div>
+                <div *ngIf="email.errors['email']">
+                    Email phải là một địa chỉ email hợp lệ
+            </div>
         </div>
-        <button class="btn btn-success" type="submit">Submit</button>
+        </div>
+        <button  type="submit" class="btn btn-primary btn-block">Submit</button>
 
     </form>
 </div>
